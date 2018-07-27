@@ -1,0 +1,18 @@
+auth-page main {
+  height: 100vh;
+  background: url(/assets/background.jpg) no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+auth-page #titleBlock h1 {
+  color: white;
+  font-size: 3.2em;
+  margin-bottom: 18rem;
+  margin-top: -2em;
+  font-family: 'Pacifico';
+  text-transform: lowercase;
+}
