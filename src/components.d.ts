@@ -165,6 +165,7 @@ declare global {
 
   namespace StencilComponents {
     interface MessageItem {
+      'local': boolean;
       'message': any;
     }
   }
@@ -188,6 +189,7 @@ declare global {
   }
   namespace JSXElements {
     export interface MessageItemAttributes extends HTMLAttributes {
+      'local'?: boolean;
       'message'?: any;
     }
   }

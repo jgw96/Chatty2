@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, State } from '@stencil/core';
 
 
 @Component({
@@ -8,10 +8,22 @@ import { Component, Prop } from '@stencil/core';
 export class MessageItem {
 
   @Prop() message: any;
+  @Prop() local: boolean;
+
+  @State() customStyle: string;
+
+  componentWillLoad() {
+    if (this.local === true) {
+      this.customStyle = 'local';
+    } else {
+      this.customStyle = 'remote';
+    }
+    console.log(this.customStyle);
+  }
 
   render() {
     return (
-      <ion-item class='messageItem' key={this.message.message}>
+      <ion-item id={this.customStyle} class='messageItem' key={this.message.message}>
         <ion-avatar slot='start'>
           <ion-img src={this.message.user.photo}></ion-img>
         </ion-avatar>

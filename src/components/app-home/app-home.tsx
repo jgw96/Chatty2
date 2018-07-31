@@ -86,12 +86,6 @@ export class AppHome {
                     <h2>{room.name}</h2>
                     <p>Started by {room.startedBy.name}</p>
                   </ion-label>
-
-                  <ion-buttons slot="end">
-                    <ion-button icon-only fill="clear">
-                      <ion-icon color='primary' slot='end' name='star-outline'></ion-icon>
-                    </ion-button>
-                  </ion-buttons>
                 </ion-item>
               )
             })

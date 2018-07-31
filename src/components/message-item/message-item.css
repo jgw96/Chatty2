@@ -3,11 +3,19 @@ message-item .messageItem ion-label {
   overflow: auto;
 }
 
-message-item .messageItem {
-  margin-left: 39%;
-  margin-right: 16px;
+message-item .messageItem{
+  width: 55%;
   margin-top: 16px;
-  background: var(--ion-color-primary);
   border-radius: 40px;
   color: white;
+}
+
+message-item #local {
+  margin-left: 40%;
+  background: var(--ion-color-primary);
+}
+
+message-item #remote {
+  margin-left: 16px;
+  background: var(--ion-color-medium);
 }
