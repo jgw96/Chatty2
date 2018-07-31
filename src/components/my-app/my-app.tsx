@@ -39,7 +39,32 @@ export class MyApp {
           <ion-route url='/room/:name' component='room-page'></ion-route>
           <ion-route url="/profile/:name" component="app-profile" />
         </ion-router>
-        <ion-nav />
+
+        <ion-split-pane>
+          <ion-menu>
+            <ion-header>
+              <ion-toolbar color="primary">
+                <ion-title>Menu</ion-title>
+              </ion-toolbar>
+            </ion-header>
+
+            <ion-content>
+              <ion-list>
+                <ion-menu-toggle>
+                  <ion-item href="/home">
+                    <ion-icon slot="start" name="home"></ion-icon>
+                    <ion-label>
+                      Home
+                    </ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </ion-list>
+            </ion-content>
+          </ion-menu>
+
+          <ion-nav main></ion-nav>
+
+        </ion-split-pane>
       </ion-app>
     );
   }

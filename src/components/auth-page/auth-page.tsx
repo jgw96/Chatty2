@@ -22,7 +22,7 @@ export class AuthPage {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider);
   }
-  
+
   render() {
     return (
       <ion-content>

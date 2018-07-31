@@ -1,0 +1,13 @@
+message-item .messageItem ion-label {
+  white-space: normal;
+  overflow: auto;
+}
+
+message-item .messageItem {
+  margin-left: 39%;
+  margin-right: 16px;
+  margin-top: 16px;
+  background: var(--ion-color-primary);
+  border-radius: 40px;
+  color: white;
+}

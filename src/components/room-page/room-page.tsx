@@ -50,7 +50,7 @@ export class RoomPage {
   render() {
     return [
       <app-header>
-        <ion-back-button defaultHref="/" />
+        <ion-back-button defaultHref="/home" />
       </app-header>,
 
       <ion-content>
@@ -58,14 +58,7 @@ export class RoomPage {
           {
             this.messages.map((message) => {
               return (
-                <ion-item class='messageItem' key={message.message}>
-                  <ion-avatar slot='start'>
-                    <ion-img src={message.user.photo}></ion-img>
-                  </ion-avatar>
-                  <ion-label>
-                    <h2>{message.message}</h2>
-                  </ion-label>
-                </ion-item>
+                <message-item message={message}></message-item>
               )
             })
           }

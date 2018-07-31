@@ -15,16 +15,16 @@ export class AppHome {
   @Prop({ connect: 'ion-alert-controller' }) alertCtrl: HTMLIonAlertControllerElement;
 
   componentDidLoad() {
-    // Loads the last 12 rooms and listen for new ones.
+    // Loads the last 15 rooms and listen for new ones.
     const callback = (snap) => {
       const data = snap.val();
       console.log(data);
-      // this.rooms.push(data);
+
       this.rooms = this.rooms.concat(data);
     };
 
-    firebase.database().ref('/rooms/').limitToLast(12).on('child_added', callback);
-    firebase.database().ref('/rooms/').limitToLast(12).on('child_changed', callback);
+    firebase.database().ref('/rooms/').limitToLast(15).on('child_added', callback);
+    firebase.database().ref('/rooms/').limitToLast(15).on('child_changed', callback);
   }
 
   private async newRoom() {
@@ -40,11 +40,11 @@ export class AppHome {
       buttons: [
         {
           text: 'Confirm',
+
           handler: async (value) => {
             console.log(value.roomName);
 
             try {
-              console.log('pushing new room');
               await firebase.database().ref('/rooms').push({
                 name: value.roomName,
                 startedBy: {
@@ -69,7 +69,9 @@ export class AppHome {
 
   render() {
     return [
-      <app-header></app-header>,
+      <app-header>
+        <ion-menu-button></ion-menu-button>
+      </app-header>,
       <ion-content>
 
         <ion-list>
@@ -85,7 +87,11 @@ export class AppHome {
                     <p>Started by {room.startedBy.name}</p>
                   </ion-label>
 
-                  <ion-icon color='primary' slot='end' name='star-outline'></ion-icon>
+                  <ion-buttons slot="end">
+                    <ion-button icon-only fill="clear">
+                      <ion-icon color='primary' slot='end' name='star-outline'></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
                 </ion-item>
               )
             })
