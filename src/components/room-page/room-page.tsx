@@ -14,8 +14,10 @@ export class RoomPage {
 
   @State() messages: any[] = [];
   @State() messageValue: string;
+  @State() hidingList: string;
 
   componentDidLoad() {
+    this.hidingList = '0';
     // Loads the last 12 rooms and listen for new ones.
     const callback = async (snap) => {
       const data = snap.val();
@@ -27,10 +29,13 @@ export class RoomPage {
     firebase.database().ref(`/messages/${this.name}`).limitToLast(15).on('child_added', callback);
     firebase.database().ref(`/messages/${this.name}`).limitToLast(15).on('child_changed', callback);
 
+    // find better way to do this
     setTimeout(() => {
       this.contentElement.getScrollElement().scrollToBottom(0);
-    }, 300);
+      this.hidingList = '1';
+    }, 400);
   }
+
 
   handleInputValue(event) {
     this.messageValue = event.target.value;
@@ -66,7 +71,7 @@ export class RoomPage {
       </app-header>,
 
       <ion-content ref={(el: HTMLIonContentElement) => this.contentElement = el}>
-        <ion-list>
+        <ion-list style={{ 'opacity': this.hidingList }}>
           {
             this.messages.map((message) => {
               if (message.user.photo === firebase.auth().currentUser.photoURL) {

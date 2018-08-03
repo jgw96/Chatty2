@@ -232,6 +232,39 @@ declare global {
 declare global {
 
   namespace StencilComponents {
+    interface PopoverPage {
+
+    }
+  }
+
+  interface HTMLPopoverPageElement extends StencilComponents.PopoverPage, HTMLStencilElement {}
+
+  var HTMLPopoverPageElement: {
+    prototype: HTMLPopoverPageElement;
+    new (): HTMLPopoverPageElement;
+  };
+  interface HTMLElementTagNameMap {
+    'popover-page': HTMLPopoverPageElement;
+  }
+  interface ElementTagNameMap {
+    'popover-page': HTMLPopoverPageElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'popover-page': JSXElements.PopoverPageAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface PopoverPageAttributes extends HTMLAttributes {
+      'onClosePopover'?: (event: CustomEvent) => void;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
     interface RoomPage {
       'name': string;
     }

@@ -11,7 +11,7 @@ auth-page main {
 auth-page #titleBlock h1 {
   color: white;
   font-size: 3.2em;
-  margin-bottom: 18rem;
+  margin-bottom: 12rem;
   margin-top: -2em;
   font-family: 'Pacifico';
   text-transform: lowercase;

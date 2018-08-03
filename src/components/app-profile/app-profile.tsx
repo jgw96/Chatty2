@@ -26,7 +26,11 @@ export class AppProfile {
   @Listen('ionChange')
   subscribeToNotify($event: CustomEvent) {
     if ($event.detail.checked === true) {
-      this.handleSub();
+      (navigator as any).requestIdleCallback(() => {
+        this.handleSub();
+      }, {
+          timeout: 2000
+        });
     }
   }
 

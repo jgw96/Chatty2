@@ -1,4 +1,4 @@
-import { Component, State } from '@stencil/core';
+import { Component, Prop, State, Listen } from '@stencil/core';
 
 declare var firebase: any;
 
@@ -7,6 +7,10 @@ declare var firebase: any;
   styleUrl: 'app-header.css'
 })
 export class AppHeader {
+
+  popover: HTMLIonPopoverElement;
+
+  @Prop({ connect: 'ion-popover-controller' }) popoverCtrl: HTMLIonPopoverControllerElement;
 
   @State() profilePic: string;
 
@@ -18,8 +22,19 @@ export class AppHeader {
     });
   }
 
-  private openPopover(event) {
-    console.log('ev', event)
+  @Listen('body:closePopover')
+  closePopover() {
+    this.popover.dismiss();
+  }
+
+  async openPopover(event) {
+    console.log(event);
+    this.popover = await this.popoverCtrl.create({
+      component: 'popover-page',
+      ev: event
+    });
+
+    await this.popover.present();
   }
 
   render() {
@@ -29,7 +44,7 @@ export class AppHeader {
           <ion-buttons slot="start">
             <slot></slot>
           </ion-buttons>
-          <ion-title>Chatty</ion-title>
+          <ion-title>Chatty Alpha</ion-title>
 
           <ion-buttons slot='end'>
             <ion-button fill='clear' onClick={(ev) => this.openPopover(ev)} icon-only>

@@ -70,7 +70,7 @@ export class AppHome {
   render() {
     return [
       <app-header>
-        <ion-menu-button></ion-menu-button>
+        {/*<ion-menu-button></ion-menu-button>*/}
       </app-header>,
       <ion-content>
 
@@ -92,9 +92,15 @@ export class AppHome {
           }
         </ion-list>
 
-        <section id='newRoomButtonBlock'>
+        {/**<section id='newRoomButtonBlock'>
           <ion-button onClick={() => this.newRoom()} color='secondary' shape='round'>New Chat Room</ion-button>
-        </section>
+        </section>**/}
+
+        <ion-fab slot='fixed' horizontal='end' vertical='bottom'>
+          <ion-fab-button color='secondary' onClick={() => this.newRoom()}>
+            <ion-icon name='add'></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
       </ion-content>
     ];
   }

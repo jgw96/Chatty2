@@ -10,12 +10,13 @@ export class AuthPage {
 
   @Element() el: HTMLElement;
 
-  componentDidLoad() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        (this.el.closest('ion-nav') as HTMLIonNavElement).setRoot('app-home', null, { animated: false, direction: 'forward' });
-      }
-    })
+  async componentDidLoad() {
+    console.log('im here');
+    const result = await firebase.auth().getRedirectResult();
+
+    if (result.user) {
+      await (this.el.closest('ion-nav') as HTMLIonNavElement).setRoot('app-home', null, { animated: false, direction: 'forward' });
+    }
   }
 
   private login() {

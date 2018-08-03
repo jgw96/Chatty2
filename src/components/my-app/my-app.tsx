@@ -40,7 +40,7 @@ export class MyApp {
           <ion-route url="/profile/:name" component="app-profile" />
         </ion-router>
 
-        <ion-split-pane>
+        {/*<ion-split-pane>
           <ion-menu>
             <ion-header>
               <ion-toolbar color="primary">
@@ -64,7 +64,9 @@ export class MyApp {
 
           <ion-nav main></ion-nav>
 
-        </ion-split-pane>
+        </ion-split-pane>*/}
+
+        <ion-nav></ion-nav>
       </ion-app>
     );
   }

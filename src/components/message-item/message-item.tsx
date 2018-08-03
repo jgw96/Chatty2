@@ -18,7 +18,6 @@ export class MessageItem {
     } else {
       this.customStyle = 'remote';
     }
-    console.log(this.customStyle);
   }
 
   render() {
